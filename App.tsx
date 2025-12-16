@@ -30,7 +30,7 @@ const Logo = ({ className = "" }: { className?: string }) => (
   <img 
     src="https://raw.githubusercontent.com/daralifaa/ADOREMY/main/logo.png" 
     alt="ADOREMY" 
-    className={`h-20 object-contain filter drop-shadow-sm ${className}`} 
+    className={`h-24 object-contain filter drop-shadow-sm ${className}`} 
   />
 );
 
@@ -194,7 +194,7 @@ const Footer = () => (
       </div>
       
       <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-        <Logo className="h-8" />
+        <Logo className="h-20" />
         <div className="flex gap-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
            <a href="#" className="hover:text-adore-pinkDark">Privacy Policy</a>
            <a href="#" className="hover:text-adore-pinkDark">Terms of Sale</a>
