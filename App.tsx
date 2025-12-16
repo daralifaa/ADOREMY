@@ -28,7 +28,7 @@ const getSweetNote = () => {
 
 const Logo = ({ className = "" }: { className?: string }) => (
   <img 
-    src="https://ibb.co.com/HprqQ2pT" 
+    src="https://imgur.com/a/YOzbnlm" 
     alt="ADOREMY" 
     className={`h-12 object-contain filter drop-shadow-sm ${className}`} 
   />
@@ -231,7 +231,7 @@ const LandingPage = () => {
         <div className="text-center z-10 max-w-4xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-6 py-2 bg-white/60 backdrop-blur-sm rounded-full text-adore-pinkDark font-bold mb-8 shadow-sm border border-white hover:scale-105 transition-transform cursor-default">
             <Sparkles size={16} />
-            <span className="text-sm tracking-wide uppercase">Your Pastel Fashion Studio</span>
+            <span className="text-sm tracking-wide uppercase">Your Personal Outfit Studio</span>
           </div>
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-black text-adore-slate leading-[1.1] mb-8 tracking-tight">
