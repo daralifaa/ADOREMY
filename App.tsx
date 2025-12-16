@@ -4,7 +4,12 @@ import { UserSession, ProductType, DraggableItem, CartItem, CheckoutDetails } fr
 import { Button } from './components/Button';
 import { getGeminiStyleAdvice } from './services/geminiService';
 import { ShirtIcon, TieIcon, KeychainIcon } from './components/Icons';
-import { Heart, ShoppingBag, Wand2, ArrowRight, User, CheckCircle, GripHorizontal, Sparkles, Mail, Lock, Star, Plus, X, Trash2, Receipt as ReceiptIcon, LogIn, LogOut, Settings, Phone, MapPin, QrCode } from 'lucide-react';
+import { Heart, ShoppingBag, Wand2, ArrowRight, User, CheckCircle, GripHorizontal, Sparkles, Mail, Lock, Star, Plus, X, Trash2, Receipt as ReceiptIcon, LogIn, LogOut, Settings, Phone, MapPin, QrCode, Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+
+// --- Utility: Currency Formatter ---
+const formatIDR = (price: number) => {
+  return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(price);
+};
 
 // --- Utility: Random Sweet Notes ---
 const getSweetNote = () => {
@@ -22,12 +27,11 @@ const getSweetNote = () => {
 // --- Shared Components ---
 
 const Logo = ({ className = "" }: { className?: string }) => (
-  <div className={`flex items-center gap-2 ${className}`}>
-    <div className="w-10 h-10 bg-gradient-to-tr from-adore-pinkDark to-adore-peachDark rounded-full flex items-center justify-center shadow-md animate-float">
-      <span className="font-display font-extrabold text-white text-lg">A</span>
-    </div>
-    <span className="text-2xl font-display font-black text-adore-slate tracking-wide">ADOREMY</span>
-  </div>
+  <img 
+    src="https://ibb.co.com/HprqQ2pT" 
+    alt="ADOREMY" 
+    className={`h-12 object-contain filter drop-shadow-sm ${className}`} 
+  />
 );
 
 // --- Navbar Component ---
@@ -55,7 +59,7 @@ const Navbar = ({
     <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-xl z-50 border-b border-adore-pink/30 shadow-sm transition-all duration-300">
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <div className="flex items-center gap-8">
-          <div onClick={() => navigate(session.isLoggedIn ? '/app' : '/')} className="cursor-pointer">
+          <div onClick={() => navigate(session.isLoggedIn ? '/app' : '/')} className="cursor-pointer hover:opacity-80 transition-opacity">
             <Logo />
           </div>
           
@@ -146,13 +150,68 @@ const Navbar = ({
   );
 };
 
+// --- Footer Component ---
+const Footer = () => (
+  <footer className="bg-white border-t border-gray-100 pt-16 pb-8 px-6">
+    <div className="max-w-7xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h4 className="font-display font-bold text-adore-slate text-lg mb-6">Resources</h4>
+          <ul className="space-y-4 text-gray-500 font-medium text-sm">
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">Design Inspiration</a></li>
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">Pastel Trends</a></li>
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">Fabric Care</a></li>
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">Bulk Orders</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-display font-bold text-adore-slate text-lg mb-6">Help</h4>
+          <ul className="space-y-4 text-gray-500 font-medium text-sm">
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">Get Help</a></li>
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">Payment Options</a></li>
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">Shipping</a></li>
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-display font-bold text-adore-slate text-lg mb-6">Company</h4>
+          <ul className="space-y-4 text-gray-500 font-medium text-sm">
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">About ADOREMY</a></li>
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">News</a></li>
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">Collections</a></li>
+            <li><a href="#" className="hover:text-adore-pinkDark transition-colors">Partners</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 className="font-display font-bold text-adore-slate text-lg mb-6">Follow Us</h4>
+          <div className="flex gap-4">
+             <a href="#" className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-adore-pink hover:text-adore-pinkDark transition-all"><Instagram size={20}/></a>
+             <a href="#" className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-adore-pink hover:text-adore-pinkDark transition-all"><Twitter size={20}/></a>
+             <a href="#" className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-adore-pink hover:text-adore-pinkDark transition-all"><Facebook size={20}/></a>
+             <a href="#" className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 hover:bg-adore-pink hover:text-adore-pinkDark transition-all"><Youtube size={20}/></a>
+          </div>
+        </div>
+      </div>
+      
+      <div className="border-t border-gray-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <Logo className="h-8" />
+        <div className="flex gap-6 text-xs font-bold text-gray-400 uppercase tracking-wider">
+           <a href="#" className="hover:text-adore-pinkDark">Privacy Policy</a>
+           <a href="#" className="hover:text-adore-pinkDark">Terms of Sale</a>
+           <a href="#" className="hover:text-adore-pinkDark">Settings</a>
+        </div>
+        <p className="text-gray-400 text-xs font-bold">© 2025 ADOREMY. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+);
+
 // --- Landing Page ---
 const LandingPage = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-white overflow-x-hidden selection:bg-adore-pink selection:text-adore-pinkDark">
-      {/* Navbar added to Landing Page for Login/Signup access */}
+    <div className="min-h-screen bg-white overflow-x-hidden selection:bg-adore-pink selection:text-adore-pinkDark flex flex-col">
       <Navbar 
         session={{ isLoggedIn: false, username: '', email: '' }} 
         cartCount={0} 
@@ -163,7 +222,7 @@ const LandingPage = () => {
       />
       
       {/* Hero Section */}
-      <header className="relative pt-32 pb-20 px-4 min-h-[90vh] flex flex-col items-center justify-center bg-gradient-to-b from-adore-mint/10 via-white to-adore-pink/10">
+      <header className="relative pt-32 pb-20 px-4 min-h-[85vh] flex flex-col items-center justify-center bg-gradient-to-b from-adore-mint/10 via-white to-adore-pink/10">
         
         {/* Floating Decor */}
         <div className="absolute top-20 left-[5%] w-32 h-32 text-6xl animate-float opacity-60 pointer-events-none">☁️</div>
@@ -196,15 +255,15 @@ const LandingPage = () => {
           </div>
         </div>
 
-        {/* Hero Cards (Restored from Version 1) */}
+        {/* Hero Cards */}
         <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 px-4 z-10">
            {/* Card 1 */}
            <div className="bg-white/60 backdrop-blur-md border border-white p-8 rounded-[2.5rem] shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 group">
               <div className="h-40 bg-adore-mint/20 rounded-[2rem] flex items-center justify-center mb-6 group-hover:bg-adore-mint/40 transition-colors">
                 <ShirtIcon className="w-24 h-24 text-adore-mintDark drop-shadow-sm transform group-hover:scale-110 transition-transform" color="currentColor" />
               </div>
-              <h3 className="font-display font-bold text-2xl text-adore-slate">Soft Shirts</h3>
-              <p className="text-gray-500 mt-2">Comfortable fits with your custom pastel palette.</p>
+              <h3 className="font-display font-bold text-2xl text-adore-slate">Cute Shirts</h3>
+              <p className="text-gray-500 mt-2">Comfortable fits with your custom palette.</p>
            </div>
            
            {/* Card 2 */}
@@ -212,7 +271,7 @@ const LandingPage = () => {
               <div className="h-40 bg-adore-pink/20 rounded-[2rem] flex items-center justify-center mb-6 group-hover:bg-adore-pink/40 transition-colors">
                 <TieIcon className="w-24 h-24 text-adore-pinkDark drop-shadow-sm transform group-hover:scale-110 transition-transform" color="currentColor" />
               </div>
-              <h3 className="font-display font-bold text-2xl text-adore-slate">Dreamy Ties</h3>
+              <h3 className="font-display font-bold text-2xl text-adore-slate">Cool Ties</h3>
               <p className="text-gray-500 mt-2">Professional yet adorable. Stand out softly.</p>
            </div>
 
@@ -221,14 +280,14 @@ const LandingPage = () => {
               <div className="h-40 bg-adore-cream/50 rounded-[2rem] flex items-center justify-center mb-6 group-hover:bg-adore-cream transition-colors">
                 <KeychainIcon className="w-24 h-24 text-adore-creamDark drop-shadow-sm transform group-hover:scale-110 transition-transform" color="currentColor" />
               </div>
-              <h3 className="font-display font-bold text-2xl text-adore-slate">Cute Charms</h3>
+              <h3 className="font-display font-bold text-2xl text-adore-slate">Tiny Charms</h3>
               <p className="text-gray-500 mt-2">Accessorize your bags with custom keychains.</p>
            </div>
         </div>
       </header>
 
       {/* Explore Section */}
-      <section id="explore" className="py-24 px-4 bg-white relative">
+      <section id="explore" className="py-24 px-4 bg-white relative flex-grow">
          <div className="max-w-6xl mx-auto">
             {/* About & Contact Info */}
             <div className="bg-adore-slate rounded-[3rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl">
@@ -237,14 +296,15 @@ const LandingPage = () => {
                
                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 relative z-10">
                  <div>
-                   <h3 className="text-3xl font-display font-bold mb-6 flex items-center gap-3"><Sparkles/> About Adoremy</h3>
+                   <h3 className="text-3xl font-display font-bold mb-6 flex items-center gap-3"><Sparkles/> About ADOREMY</h3>
                    <p className="text-gray-200 text-lg leading-relaxed mb-6">
-                     We are a small team of dreamers who believe that everyone deserves to wear their personality. 
-                     Our studio allows you to mix, match, and customize high-quality fashion items with a kawaii twist.
+                     Welcome to ADOREMY, a space built to celebrate the joy of self-expression. Created independently to spark your creativity, 
+                     this platform lets you mix, match, and customize high-quality fashion items with a kawaii twist. 
+                     Here, fashion isn't just about what you wear; it's about the fun of creating it yourself.
                    </p>
                    <div className="flex gap-4">
-                     <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold border border-white/10">🌱 Eco-Friendly</span>
-                     <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold border border-white/10">💖 Handmade</span>
+                     <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold border border-white/10">Eco-Friendly</span>
+                     <span className="px-4 py-2 bg-white/10 rounded-full text-sm font-bold border border-white/10">Handmade</span>
                    </div>
                  </div>
                  <div>
@@ -253,11 +313,11 @@ const LandingPage = () => {
                    <ul className="space-y-4 text-gray-200 font-medium">
                      <li className="flex items-center gap-3 bg-white/5 p-3 rounded-2xl">
                        <Mail size={20} className="text-adore-pink" /> 
-                       hello@adoremy.com
+                       hello@adoremystudio.com
                      </li>
                      <li className="flex items-center gap-3 bg-white/5 p-3 rounded-2xl">
                        <Star size={20} className="text-adore-pink" /> 
-                       @adoremy_studio
+                       @adoremystudio
                      </li>
                    </ul>
                  </div>
@@ -266,11 +326,7 @@ const LandingPage = () => {
          </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-50 py-12 text-center border-t border-gray-100">
-        <Logo className="justify-center mb-4 scale-75" />
-        <p className="text-gray-400 text-sm font-medium">© 2025 ADOREMY. Designed with love.</p>
-      </footer>
+      <Footer />
     </div>
   );
 };
@@ -314,10 +370,10 @@ const LoginPage = ({ setSession }: { setSession: (s: UserSession) => void }) => 
              <Logo className="scale-75 origin-center" />
            </div>
           <h2 className="text-3xl font-display font-black text-adore-slate mb-3">
-            {isSignUp ? "Join the Club" : "Welcome Back"}
+            {isSignUp ? "Join the Club" : "Welcome, dear!"}
           </h2>
           <p className="text-gray-500 font-medium">
-            {isSignUp ? "Create your pastel profile!" : "Ready to create something cute?"}
+            {isSignUp ? "Create your pastel profile!" : "Ready to be adorable?"}
           </p>
         </div>
 
@@ -396,15 +452,26 @@ const LoginPage = ({ setSession }: { setSession: (s: UserSession) => void }) => 
 };
 
 // --- Dashboard (New View) ---
-const Dashboard = () => {
+const Dashboard = ({ onOpenStudio, onAddToCart }: { onOpenStudio: () => void, onAddToCart: (item: CartItem) => void }) => {
   const products = [
-    { id: 1, name: "Minty Fresh Tee", price: "IDR 100.000", type: "Shirt", color: "#e0f7fa", icon: ShirtIcon },
-    { id: 2, name: "Business Pink", price: "IDR 70.000", type: "Tie", color: "#fce4ec", icon: TieIcon },
-    { id: 3, name: "Sunny Charm", price: "IDR 30.000", type: "Keychain", color: "#fffde7", icon: KeychainIcon },
-    { id: 4, name: "Lilac Dreams", price: "IDR 150.000", type: "Shirt", color: "#f3e5f5", icon: ShirtIcon },
-    { id: 5, name: "Peachy Day", price: "IDR 150.000", type: "Shirt", color: "#fff3e0", icon: ShirtIcon },
-    { id: 6, name: "Sky High", price: "IDR 70.000", type: "Tie", color: "#e3f2fd", icon: TieIcon },
+    { id: 1, name: "Minty Fresh Tee", price: 150000, type: ProductType.SHIRT, color: "#e0f7fa", icon: ShirtIcon },
+    { id: 2, name: "Business Pink", price: 75000, type: ProductType.TIE, color: "#fce4ec", icon: TieIcon },
+    { id: 3, name: "Sunny Charm", price: 35000, type: ProductType.KEYCHAIN, color: "#fffde7", icon: KeychainIcon },
+    { id: 4, name: "Lilac Dreams", price: 150000, type: ProductType.SHIRT, color: "#f3e5f5", icon: ShirtIcon },
+    { id: 5, name: "Peachy Day", price: 150000, type: ProductType.SHIRT, color: "#fff3e0", icon: ShirtIcon },
+    { id: 6, name: "Sky High", price: 75000, type: ProductType.TIE, color: "#e3f2fd", icon: TieIcon },
   ];
+
+  const handleQuickAdd = (p: any) => {
+    onAddToCart({
+      id: Date.now().toString(),
+      product: p.type,
+      baseColor: p.color,
+      items: [],
+      price: p.price,
+      timestamp: Date.now()
+    });
+  };
 
   return (
     <div className="pt-32 pb-12 px-6 max-w-7xl mx-auto">
@@ -415,7 +482,10 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {/* Create Your Own Card */}
-        <div className="col-span-1 sm:col-span-2 lg:col-span-1 bg-gradient-to-br from-adore-pink to-adore-peach rounded-[2.5rem] p-8 flex flex-col items-center justify-center text-center text-adore-slate relative overflow-hidden group border-4 border-white shadow-lg">
+        <div 
+          onClick={onOpenStudio}
+          className="col-span-1 sm:col-span-2 lg:col-span-1 bg-gradient-to-br from-adore-pink to-adore-peach rounded-[2.5rem] p-8 flex flex-col items-center justify-center text-center text-adore-slate relative overflow-hidden group border-4 border-white shadow-lg cursor-pointer hover:scale-[1.02] transition-transform"
+        >
           <div className="absolute inset-0 bg-white/30 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity"></div>
           <div className="relative z-10">
             <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mb-6 mx-auto shadow-md group-hover:scale-110 transition-transform duration-500">
@@ -431,11 +501,20 @@ const Dashboard = () => {
 
         {/* Product Cards */}
         {products.map((p) => (
-          <div key={p.id} className="bg-white rounded-[2.5rem] p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:border-adore-pink/30 transition-all hover:-translate-y-1 group">
+          <div 
+            key={p.id} 
+            onClick={() => handleQuickAdd(p)}
+            className="bg-white rounded-[2.5rem] p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:border-adore-pink/30 transition-all hover:-translate-y-1 group cursor-pointer"
+          >
             <div className="h-64 rounded-[2rem] mb-6 flex items-center justify-center relative overflow-hidden" style={{backgroundColor: p.color}}>
               <p.icon className="w-32 h-32 drop-shadow-md group-hover:scale-110 transition-transform duration-500 text-adore-slate/50" color="currentColor" />
               <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-gray-500">
                 {p.type}
+              </div>
+              <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <span className="bg-white text-adore-slate font-bold px-4 py-2 rounded-full shadow-lg text-sm flex items-center gap-2">
+                  <ShoppingBag size={14}/> Quick Add
+                </span>
               </div>
             </div>
             <div className="flex justify-between items-center px-2">
@@ -443,8 +522,8 @@ const Dashboard = () => {
                 <h3 className="font-display font-bold text-lg text-adore-slate">{p.name}</h3>
                 <p className="text-gray-400 text-sm font-medium">In Stock</p>
               </div>
-              <span className="font-display font-bold text-adore-pinkDark bg-adore-pink/20 px-4 py-2 rounded-xl">
-                {p.price}
+              <span className="font-display font-bold text-adore-pinkDark bg-adore-pink/20 px-4 py-2 rounded-xl text-sm">
+                {formatIDR(p.price)}
               </span>
             </div>
           </div>
@@ -463,6 +542,15 @@ const Studio = ({ session, onClose, onAddToCart }: { session: UserSession, onClo
   const [aiSuggestion, setAiSuggestion] = useState<string>("");
   const [isAiLoading, setIsAiLoading] = useState(false);
   const canvasRef = useRef<HTMLDivElement>(null);
+
+  const getBasePrice = (type: ProductType) => {
+    switch(type) {
+      case ProductType.SHIRT: return 150000;
+      case ProductType.TIE: return 75000;
+      case ProductType.KEYCHAIN: return 35000;
+      default: return 100000;
+    }
+  };
 
   const handleAskAI = async () => {
     setIsAiLoading(true);
@@ -502,7 +590,7 @@ const Studio = ({ session, onClose, onAddToCart }: { session: UserSession, onClo
       product,
       baseColor,
       items,
-      price: 29.99, // Flat price for demo
+      price: getBasePrice(product),
       timestamp: Date.now()
     };
     onAddToCart(newItem);
@@ -685,7 +773,7 @@ const Studio = ({ session, onClose, onAddToCart }: { session: UserSession, onClo
         <div className="border-t border-gray-100 pt-6">
           <div className="flex justify-between items-end mb-6">
             <span className="text-gray-400 font-bold text-sm uppercase tracking-wider">Price</span>
-            <span className="text-3xl font-display font-black text-adore-slate">$29.99</span>
+            <span className="text-3xl font-display font-black text-adore-slate">{formatIDR(getBasePrice(product))}</span>
           </div>
           <Button fullWidth onClick={handleAddToCart} className="py-4 text-lg shadow-xl shadow-adore-pink/20 hover:shadow-adore-pink/40 rounded-2xl">
             Add to Cart
@@ -759,7 +847,7 @@ const CartDrawer = ({
                       ))}
                       {item.items.length > 3 && <span className="text-xs text-gray-400 flex items-center">+{item.items.length - 3}</span>}
                     </div>
-                    <p className="text-adore-pinkDark font-bold mt-2 text-right">${item.price}</p>
+                    <p className="text-adore-pinkDark font-bold mt-2 text-right">{formatIDR(item.price)}</p>
                   </div>
                 </div>
               ))}
@@ -770,7 +858,7 @@ const CartDrawer = ({
         <div className="p-6 border-t border-gray-100 bg-gray-50/50">
            <div className="flex justify-between items-center mb-6">
              <span className="text-gray-500 font-bold">Total</span>
-             <span className="text-3xl font-display font-black text-adore-slate">${total.toFixed(2)}</span>
+             <span className="text-3xl font-display font-black text-adore-slate">{formatIDR(total)}</span>
            </div>
            <Button fullWidth onClick={onCheckout} disabled={items.length === 0} className="py-4 text-lg shadow-xl shadow-adore-pink/20 hover:shadow-adore-pink/40 rounded-2xl">
              Proceed to Checkout
@@ -828,7 +916,7 @@ const CheckoutModal = ({ isOpen, onClose, onPayment, initialDetails }: { isOpen:
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   required
                   className="w-full pl-14 pr-6 py-4 rounded-2xl border-2 border-gray-100 focus:border-adore-pink focus:ring-4 focus:ring-adore-pink/10 outline-none transition-all bg-gray-50/50 text-gray-700 font-bold placeholder-gray-300"
-                  placeholder="+1 234 567 890"
+                  placeholder="+62 812 3456 7890"
                 />
              </div>
           </div>
@@ -885,7 +973,7 @@ const QRISModal = ({ isOpen, onClose, onConfirm, amount }: { isOpen: boolean, on
 
          <div className="mb-8">
             <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Total Amount</p>
-            <p className="text-3xl font-display font-black text-adore-pinkDark">${amount.toFixed(2)}</p>
+            <p className="text-3xl font-display font-black text-adore-pinkDark">{formatIDR(amount)}</p>
          </div>
 
          <Button onClick={onConfirm} fullWidth className="py-3 bg-adore-slate hover:bg-gray-800 shadow-xl">
@@ -939,7 +1027,7 @@ const ReceiptModal = ({ isOpen, onClose, items, note, details }: { isOpen: boole
              </div>
              <div className="flex justify-between text-2xl font-bold text-adore-slate">
                <span>Total Paid</span>
-               <span>${total.toFixed(2)}</span>
+               <span>{formatIDR(total)}</span>
              </div>
            </div>
 
@@ -1031,8 +1119,28 @@ const MainAppLayout = ({
     return <Navigate to="/login" replace />;
   }
 
+  // Wrapper to inject props into Dashboard
+  const DashboardWithProps = () => (
+    <Dashboard onOpenStudio={onOpenStudio} onAddToCart={(item) => cart.push(item) /* Note: cart.push is bad react, but this is fixed by parent state update in App component logic passed down, wait. The App component manages state. MainAppLayout receives cart but needs to pass add function. */} />
+  );
+  // Correct way: The App component passes `addToCart` to `MainAppLayout`, which passes it to `Dashboard`.
+  // Wait, `MainAppLayout` in `App` component definition:
+  /*
+  <MainAppLayout 
+    session={session} 
+    cart={cart}
+    onOpenCart={() => setIsCartOpen(true)}
+    onOpenStudio={() => setIsStudioOpen(true)}
+    onOpenProfile={() => setIsProfileOpen(true)}
+    onLogout={handleLogout}
+  />
+  */
+  // I need to update MainAppLayout props to include `onAddToCart` or pass it down. 
+  // Actually, MainAppLayout renders <Navbar> and <Dashboard>.
+  // I will modify MainAppLayout to accept onAddToCart.
+
   return (
-    <div className="min-h-screen bg-gray-50/30 font-sans">
+    <div className="min-h-screen bg-gray-50/30 font-sans flex flex-col">
       <Navbar 
         session={session} 
         cartCount={cart.length} 
@@ -1041,7 +1149,24 @@ const MainAppLayout = ({
         onOpenProfile={onOpenProfile}
         onLogout={onLogout}
       />
-      <Dashboard />
+      {/* We need to pass the addToCart function here, but it's not in props. 
+          I will change MainAppLayout signature below to include it.
+          For now, I'll assume it's passed or I will fix the App component to pass it.
+      */}
+      {/* Since I can't easily change the prop signature in the middle of this block without context of App component calling it, 
+          I will fix it in the App component return statement. 
+      */}
+      {/* BUT wait, MainAppLayout calls <Dashboard />. Dashboard NOW requires props. 
+          So MainAppLayout MUST receive them.
+      */}
+      <div className="flex-grow">
+          {/* Placeholder, will be replaced by actual Dashboard in the App component's route or passed as children? 
+              In the previous code, MainAppLayout rendered <Dashboard /> directly.
+              I will change MainAppLayout to take `children` or `dashboardProps`.
+              Actually, easier: modify MainAppLayout to take `onAddToCart`.
+          */}
+      </div>
+       <Footer />
     </div>
   );
 };
@@ -1104,12 +1229,30 @@ const App = () => {
   const handleLogout = () => {
     setSession({ username: '', email: '', isLoggedIn: false });
     localStorage.removeItem('adoremy_user');
-    window.location.hash = '/'; // Force navigate to landing
+    window.location.hash = '/'; 
   };
 
   const handleUpdateProfile = (newSession: UserSession) => {
     setSession(newSession);
   };
+
+  // Modified MainAppLayout to accept addToCart and pass it to Dashboard
+  const AppLayout = () => (
+    <div className="min-h-screen bg-gray-50/30 font-sans flex flex-col">
+      <Navbar 
+        session={session} 
+        cartCount={cart.length} 
+        onOpenCart={() => setIsCartOpen(true)} 
+        onOpenStudio={() => setIsStudioOpen(true)} 
+        onOpenProfile={() => setIsProfileOpen(true)}
+        onLogout={handleLogout}
+      />
+      <div className="flex-grow">
+        <Dashboard onOpenStudio={() => setIsStudioOpen(true)} onAddToCart={addToCart} />
+      </div>
+      <Footer />
+    </div>
+  );
 
   return (
     <HashRouter>
@@ -1117,14 +1260,7 @@ const App = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage setSession={setSession} />} />
         <Route path="/app" element={
-          <MainAppLayout 
-            session={session} 
-            cart={cart}
-            onOpenCart={() => setIsCartOpen(true)}
-            onOpenStudio={() => setIsStudioOpen(true)}
-            onOpenProfile={() => setIsProfileOpen(true)}
-            onLogout={handleLogout}
-          />
+          session.isLoggedIn ? <AppLayout /> : <Navigate to="/login" replace />
         } />
       </Routes>
 
