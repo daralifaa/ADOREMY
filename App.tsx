@@ -28,7 +28,7 @@ const getSweetNote = () => {
 
 const Logo = ({ className = "" }: { className?: string }) => (
   <img 
-    src="https://i.imgur.com/CwjX9Nk.png" 
+    src="https://i.imgur.com/K77pd1U.png" 
     alt="ADOREMY" 
     className={`h-20 object-contain filter drop-shadow-sm ${className}`} 
   />
