@@ -9,12 +9,12 @@ import { Heart, ShoppingBag, Wand2, ArrowRight, User, CheckCircle, GripHorizonta
 // --- Utility: Random Sweet Notes ---
 const getSweetNote = () => {
   const notes = [
-    "You are magic! ✨",
-    "Stay soft & strong! 🌸",
-    "Wear this with a smile! 😊",
-    "You look lovely today! 💖",
-    "Sending you pastel hugs! ☁️",
-    "Shine bright like a diamond! 💎"
+    "Adorable-nesss is now yours!",
+    "Stay adoreable^^",
+    "XOXO",
+    "You look lovely with this!",
+    "Sending you huge hugs!",
+    "Have a-dorable day!"
   ];
   return notes[Math.floor(Math.random() * notes.length)];
 };
@@ -269,7 +269,7 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className="bg-gray-50 py-12 text-center border-t border-gray-100">
         <Logo className="justify-center mb-4 scale-75" />
-        <p className="text-gray-400 text-sm font-medium">© 2024 ADOREMY. Designed with love.</p>
+        <p className="text-gray-400 text-sm font-medium">© 2025 ADOREMY. Designed with love <3.</p>
       </footer>
     </div>
   );
@@ -398,12 +398,12 @@ const LoginPage = ({ setSession }: { setSession: (s: UserSession) => void }) => 
 // --- Dashboard (New View) ---
 const Dashboard = () => {
   const products = [
-    { id: 1, name: "Minty Fresh Tee", price: "$29.99", type: "Shirt", color: "#e0f7fa", icon: ShirtIcon },
-    { id: 2, name: "Business Pink", price: "$19.99", type: "Tie", color: "#fce4ec", icon: TieIcon },
-    { id: 3, name: "Sunny Charm", price: "$9.99", type: "Keychain", color: "#fffde7", icon: KeychainIcon },
-    { id: 4, name: "Lilac Dreams", price: "$29.99", type: "Shirt", color: "#f3e5f5", icon: ShirtIcon },
-    { id: 5, name: "Peachy Day", price: "$29.99", type: "Shirt", color: "#fff3e0", icon: ShirtIcon },
-    { id: 6, name: "Sky High", price: "$19.99", type: "Tie", color: "#e3f2fd", icon: TieIcon },
+    { id: 1, name: "Minty Fresh Tee", price: "IDR 100.000", type: "Shirt", color: "#e0f7fa", icon: ShirtIcon },
+    { id: 2, name: "Business Pink", price: "IDR 70.000", type: "Tie", color: "#fce4ec", icon: TieIcon },
+    { id: 3, name: "Sunny Charm", price: "IDR 30.000", type: "Keychain", color: "#fffde7", icon: KeychainIcon },
+    { id: 4, name: "Lilac Dreams", price: "IDR 150.000", type: "Shirt", color: "#f3e5f5", icon: ShirtIcon },
+    { id: 5, name: "Peachy Day", price: "IDR 150.000", type: "Shirt", color: "#fff3e0", icon: ShirtIcon },
+    { id: 6, name: "Sky High", price: "IDR 70.000", type: "Tie", color: "#e3f2fd", icon: TieIcon },
   ];
 
   return (
