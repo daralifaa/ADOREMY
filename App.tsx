@@ -269,7 +269,7 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className="bg-gray-50 py-12 text-center border-t border-gray-100">
         <Logo className="justify-center mb-4 scale-75" />
-        <p className="text-gray-400 text-sm font-medium">© 2025 ADOREMY. Designed with love <3.</p>
+        <p className="text-gray-400 text-sm font-medium">© 2025 ADOREMY. Designed with love.</p>
       </footer>
     </div>
   );
