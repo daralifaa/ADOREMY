@@ -28,9 +28,9 @@ const getSweetNote = () => {
 
 const Logo = ({ className = "" }: { className?: string }) => (
   <img 
-    src="https://i.imgur.com/CwjX9Nk.png" 
+    src="https://i.imgur.com/xyfLz2e.png" 
     alt="ADOREMY" 
-    className={`h-12 object-contain filter drop-shadow-sm ${className}`} 
+    className={`h-20 object-contain filter drop-shadow-sm ${className}`} 
   />
 );
 
@@ -135,11 +135,11 @@ const Navbar = ({
             <div className="flex gap-4">
                <button 
                  onClick={() => navigate('/login')} 
-                 className="hidden md:flex items-center gap-2 px-6 py-2 bg-white border-2 border-adore-slate/10 rounded-full text-adore-slate font-bold hover:border-adore-pink hover:text-adore-pinkDark transition-all"
+                 className="hidden md:flex font-sans items-center gap-2 px-6 py-2 bg-white border-2 border-adore-slate/10 rounded-full text-adore-slate font-bold hover:border-adore-pink hover:text-adore-pinkDark transition-all"
                >
                  Log In
                </button>
-               <Button onClick={() => navigate('/login')} className="shadow-lg shadow-adore-pink/20 rounded-full px-8">
+               <Button onClick={() => navigate('/login')} className="font-sans shadow-lg shadow-adore-pink/20 rounded-full px-8">
                  Sign Up
                </Button>
             </div>
@@ -236,7 +236,7 @@ const LandingPage = () => {
           
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-black text-adore-slate leading-[1.1] mb-8 tracking-tight">
             Design Your <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-adore-pinkDark to-adore-peachDark">Pastel Dreams</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-adore-pinkDark to-adore-peachDark">Adorable Fit</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-adore-slate/80 mb-12 max-w-2xl mx-auto font-sans leading-relaxed">
@@ -370,7 +370,7 @@ const LoginPage = ({ setSession }: { setSession: (s: UserSession) => void }) => 
              <Logo className="scale-75 origin-center" />
            </div>
           <h2 className="text-3xl font-display font-black text-adore-slate mb-3">
-            {isSignUp ? "Join the Club" : "Welcome, dear!"}
+            {isSignUp ? "Join the Club, dear!" : "Welcome, dear!"}
           </h2>
           <p className="text-gray-500 font-medium">
             {isSignUp ? "Create your pastel profile!" : "Ready to be adorable?"}
@@ -1010,7 +1010,7 @@ const ReceiptModal = ({ isOpen, onClose, items, note, details }: { isOpen: boole
 
         <div className="p-8">
            <div className="text-center mb-8">
-             <h3 className="font-handwriting text-2xl font-bold text-adore-pinkDark mb-2 rotate-2">"{note}"</h3>
+             <h3 className="font-handwriting text-2xl font-bold text-adore-pinkDark mb-2">"{note}"</h3>
              <p className="text-xs text-gray-400 uppercase tracking-widest font-bold">A sweet note for you</p>
            </div>
 
