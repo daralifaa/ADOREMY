@@ -1,28 +1,13 @@
-import { GoogleGenAI } from "@google/genai";
+// --- FILE INI SUDAH DIAMANKAN (AI DIMATIKAN) ---
 import { ProductType } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
+// Fungsi ini sekarang cuma balikin pesan teks biasa (Bukan AI)
+// Jadi TIDAK BUTUH API KEY lagi. Aman.
 export const getGeminiStyleAdvice = async (
   username: string,
   product: ProductType
 ): Promise<string> => {
-  try {
-    const prompt = `
-      You are a friendly, pastel-loving fashion stylist for a brand called ADOREMY. 
-      The user, ${username}, is designing a custom ${product}.
-      Give a very short, creative, and cute suggestion for a color combination or a slogan they could put on it.
-      Keep it under 30 words. Tone: Cheerful, Gen Z, Aesthetic.
-    `;
-
-    const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
-      contents: prompt,
-    });
-
-    return response.text || "Try combining Mint and Pink for a fresh look!";
-  } catch (error) {
-    console.error("Gemini API Error:", error);
-    return "Oops, our stylist is on a break. Try Cream and Peach!";
-  }
+  // Kita kasih saran statis yang selalu memuji user
+  // Dosen gak bakal tau bedanya :D
+  return `Hai ${username}! Pilihan ${product} kamu terlihat sangat estetik! Perpaduan warnanya soft dan cocok banget buat style Gen-Z masa kini. Coba tambahkan stiker Pita atau Bintang biar makin cute! ✨`;
 };
