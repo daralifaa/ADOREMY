@@ -256,33 +256,47 @@ const LandingPage = () => {
         </div>
 
         {/* Hero Cards */}
-        <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 px-4 z-10">
-           {/* Card 1 */}
-           <div className="bg-white/60 backdrop-blur-md border border-white p-8 rounded-[2.5rem] shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 group">
-              <div className="h-40 bg-adore-mint/20 rounded-[2rem] flex items-center justify-center mb-6 group-hover:bg-adore-mint/40 transition-colors">
-                <ShirtIcon className="w-24 h-24 text-adore-mintDark drop-shadow-sm transform group-hover:scale-110 transition-transform" color="currentColor" />
+        {/* 👇 Tambahin mt-20 disini biar turun kebawah */}
+        <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-3 gap-8 px-4 z-10 mt-20">
+            {/* Card 1 - Shirts */}
+            <div className="bg-white/60 backdrop-blur-md border border-white p-6 rounded-[2.5rem] shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 group">
+              {/* 👇 Ganti jadi aspect-square biar 1:1 (Kotak) */}
+              <div className="aspect-square w-full bg-adore-mint/20 rounded-[2rem] overflow-hidden mb-6 relative shadow-sm">
+                <img 
+                  src="https://raw.githubusercontent.com/daralifaa/ADOREMY/main/fronttee.png" 
+                  alt="Cute Shirts" 
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" 
+                />
               </div>
               <h3 className="font-display font-bold text-2xl text-adore-slate">Cute Shirts</h3>
-              <p className="text-gray-500 mt-2">Comfortable fits with your custom palette.</p>
-           </div>
-           
-           {/* Card 2 */}
-           <div className="bg-white/60 backdrop-blur-md border border-white p-8 rounded-[2.5rem] shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 md:-mt-12 group">
-              <div className="h-40 bg-adore-pink/20 rounded-[2rem] flex items-center justify-center mb-6 group-hover:bg-adore-pink/40 transition-colors">
-                <TieIcon className="w-24 h-24 text-adore-pinkDark drop-shadow-sm transform group-hover:scale-110 transition-transform" color="currentColor" />
+              <p className="text-gray-500 mt-2 text-sm">Comfortable fits with your custom palette.</p>
+            </div>
+            
+            {/* Card 2 - Ties (Posisi tengah agak naik dikit biar estetik) */}
+            <div className="bg-white/60 backdrop-blur-md border border-white p-6 rounded-[2.5rem] shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 md:-mt-12 group">
+              <div className="aspect-square w-full bg-adore-pink/20 rounded-[2rem] overflow-hidden mb-6 relative shadow-sm">
+                <img 
+                  src="https://raw.githubusercontent.com/daralifaa/ADOREMY/main/fronttie.png" 
+                  alt="Cool Ties" 
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" 
+                />
               </div>
               <h3 className="font-display font-bold text-2xl text-adore-slate">Cool Ties</h3>
-              <p className="text-gray-500 mt-2">Professional yet adorable. Stand out softly.</p>
-           </div>
+              <p className="text-gray-500 mt-2 text-sm">Professional yet adorable. Stand out softly.</p>
+            </div>
 
-           {/* Card 3 */}
-           <div className="bg-white/60 backdrop-blur-md border border-white p-8 rounded-[2.5rem] shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 group">
-              <div className="h-40 bg-adore-cream/50 rounded-[2rem] flex items-center justify-center mb-6 group-hover:bg-adore-cream transition-colors">
-                <KeychainIcon className="w-24 h-24 text-adore-creamDark drop-shadow-sm transform group-hover:scale-110 transition-transform" color="currentColor" />
+            {/* Card 3 - Keychains */}
+            <div className="bg-white/60 backdrop-blur-md border border-white p-6 rounded-[2.5rem] shadow-lg hover:shadow-xl transition-all hover:-translate-y-2 group">
+              <div className="aspect-square w-full bg-adore-cream/50 rounded-[2rem] overflow-hidden mb-6 relative shadow-sm">
+                <img 
+                  src="https://raw.githubusercontent.com/daralifaa/ADOREMY/main/frontkeychain.png" 
+                  alt="Tiny Charms" 
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" 
+                />
               </div>
               <h3 className="font-display font-bold text-2xl text-adore-slate">Tiny Charms</h3>
-              <p className="text-gray-500 mt-2">Accessorize your bags with custom keychains.</p>
-           </div>
+              <p className="text-gray-500 mt-2 text-sm">Accessorize your bags with custom keychains.</p>
+            </div>
         </div>
       </header>
 
@@ -456,11 +470,10 @@ const Dashboard = ({ onOpenStudio, onAddToCart }: { onOpenStudio: () => void, on
   const products = [
     // Produk 1: Punya Image (Icon boleh dihapus gpp)
     { id: 1, name: "Minty Fresh Tee", price: 150000, type: ProductType.SHIRT, color: "#e0f7fa", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/minty.png" },
-    // Produk 2: Masih Icon (Aman, nanti tampil icon)
-    { id: 2, name: "Business Pink", price: 75000, type: ProductType.TIE, color: "#fce4ec", icon: TieIcon },
+    { id: 2, name: "Matcha Business", price: 75000, type: ProductType.TIE, color: "#fce4ec", icon: TieIcon },
     { id: 3, name: "Dolly Bear", price: 35000, type: ProductType.KEYCHAIN, color: "#fffde7", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/bear.png" },
-    { id: 4, name: "Lilac Dreams", price: 150000, type: ProductType.SHIRT, color: "#f3e5f5", icon: ShirtIcon },
-    { id: 5, name: "Peachy Day", price: 150000, type: ProductType.SHIRT, color: "#fff3e0", icon: ShirtIcon },
+    { id: 4, name: "Dream Denim", price: 150000, type: ProductType.SHIRT, color: "#f3e5f5", icon: ShirtIcon },
+    { id: 5, name: "Ribbon Day", price: 150000, type: ProductType.SHIRT, color: "#fff3e0", icon: ShirtIcon },
     { id: 6, name: "Lovely Street", price: 75000, type: ProductType.TIE, color: "#e3f2fd", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/lovely.png" },
   ];
 
