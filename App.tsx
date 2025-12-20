@@ -454,12 +454,12 @@ const LoginPage = ({ setSession }: { setSession: (s: UserSession) => void }) => 
 // --- Dashboard (New View) ---
 const Dashboard = ({ onOpenStudio, onAddToCart }: { onOpenStudio: () => void, onAddToCart: (item: CartItem) => void }) => {
   const products = [
-    { id: 1, name: "Minty Fresh Tee", price: 150000, type: ProductType.SHIRT, color: "#e0f7fa", icon: ShirtIcon },
+    { id: 1, name: "Minty Fresh Tee", price: 150000, type: ProductType.SHIRT, color: "#e0f7fa", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/minty.png" },
     { id: 2, name: "Business Pink", price: 75000, type: ProductType.TIE, color: "#fce4ec", icon: TieIcon },
-    { id: 3, name: "Sunny Charm", price: 35000, type: ProductType.KEYCHAIN, color: "#fffde7", icon: KeychainIcon },
+    { id: 3, name: "Dolly Bear", price: 35000, type: ProductType.KEYCHAIN, color: "#fffde7", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/bear.png" },
     { id: 4, name: "Lilac Dreams", price: 150000, type: ProductType.SHIRT, color: "#f3e5f5", icon: ShirtIcon },
     { id: 5, name: "Peachy Day", price: 150000, type: ProductType.SHIRT, color: "#fff3e0", icon: ShirtIcon },
-    { id: 6, name: "Sky High", price: 75000, type: ProductType.TIE, color: "#e3f2fd", icon: TieIcon },
+    { id: 6, name: "Lovely Street", price: 75000, type: ProductType.TIE, color: "#e3f2fd", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/lovely.png" },
   ];
 
   const handleQuickAdd = (p: any) => {
