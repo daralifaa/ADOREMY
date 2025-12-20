@@ -470,10 +470,10 @@ const Dashboard = ({ onOpenStudio, onAddToCart }: { onOpenStudio: () => void, on
   const products = [
     // Produk 1: Punya Image (Icon boleh dihapus gpp)
     { id: 1, name: "Minty Fresh Tee", price: 150000, type: ProductType.SHIRT, color: "#e0f7fa", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/minty.png" },
-    { id: 2, name: "Matcha Business", price: 75000, type: ProductType.TIE, color: "#fce4ec", icon: TieIcon },
+    { id: 2, name: "Matcha Business", price: 75000, type: ProductType.TIE, color: "#fce4ec", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/matcha.png" },
     { id: 3, name: "Dolly Bear", price: 35000, type: ProductType.KEYCHAIN, color: "#fffde7", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/bear.png" },
-    { id: 4, name: "Dream Denim", price: 150000, type: ProductType.SHIRT, color: "#f3e5f5", icon: ShirtIcon },
-    { id: 5, name: "Ribbon Day", price: 150000, type: ProductType.SHIRT, color: "#fff3e0", icon: ShirtIcon },
+    { id: 4, name: "Dream Denim", price: 150000, type: ProductType.SHIRT, color: "#f3e5f5", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/denim.png" },
+    { id: 5, name: "Ribbon Day", price: 150000, type: ProductType.SHIRT, color: "#fff3e0", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/ribbon.png" },
     { id: 6, name: "Lovely Street", price: 75000, type: ProductType.TIE, color: "#e3f2fd", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/lovely.png" },
   ];
 
