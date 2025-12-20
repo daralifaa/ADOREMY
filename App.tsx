@@ -451,10 +451,12 @@ const LoginPage = ({ setSession }: { setSession: (s: UserSession) => void }) => 
   );
 };
 
-// --- Dashboard (New View) ---
+// --- Dashboard (Versi Anti-Crash) ---
 const Dashboard = ({ onOpenStudio, onAddToCart }: { onOpenStudio: () => void, onAddToCart: (item: CartItem) => void }) => {
   const products = [
+    // Produk 1: Punya Image (Icon boleh dihapus gpp)
     { id: 1, name: "Minty Fresh Tee", price: 150000, type: ProductType.SHIRT, color: "#e0f7fa", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/minty.png" },
+    // Produk 2: Masih Icon (Aman, nanti tampil icon)
     { id: 2, name: "Business Pink", price: 75000, type: ProductType.TIE, color: "#fce4ec", icon: TieIcon },
     { id: 3, name: "Dolly Bear", price: 35000, type: ProductType.KEYCHAIN, color: "#fffde7", image: "https://raw.githubusercontent.com/daralifaa/ADOREMY/main/bear.png" },
     { id: 4, name: "Lilac Dreams", price: 150000, type: ProductType.SHIRT, color: "#f3e5f5", icon: ShirtIcon },
@@ -506,17 +508,31 @@ const Dashboard = ({ onOpenStudio, onAddToCart }: { onOpenStudio: () => void, on
             onClick={() => handleQuickAdd(p)}
             className="bg-white rounded-[2.5rem] p-6 shadow-sm border border-gray-100 hover:shadow-xl hover:border-adore-pink/30 transition-all hover:-translate-y-1 group cursor-pointer"
           >
-            <div className="h-64 rounded-[2rem] mb-6 flex items-center justify-center relative overflow-hidden" style={{backgroundColor: p.color}}>
-              <p.icon className="w-32 h-32 drop-shadow-md group-hover:scale-110 transition-transform duration-500 text-adore-slate/50" color="currentColor" />
-              <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-gray-500">
+            {/* 👇 LOGIC BARU: Cek Image Dulu, Kalau Gak Ada Baru Cek Icon */}
+            <div className="h-64 rounded-[2rem] mb-6 flex items-center justify-center relative overflow-hidden shadow-sm" style={{backgroundColor: p.image ? 'transparent' : p.color}}>
+              
+              {p.image ? (
+                // Kalau ada gambar, tampilkan gambar
+                <img 
+                    src={p.image} 
+                    alt={p.name} 
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+                />
+              ) : (
+                // Kalau tidak ada gambar, tampilkan icon (Fallback)
+                p.icon && <p.icon className="w-32 h-32 drop-shadow-md group-hover:scale-110 transition-transform duration-500 text-adore-slate/50" color="currentColor" />
+              )}
+
+              <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-gray-500 z-10">
                 {p.type}
               </div>
-              <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20">
                 <span className="bg-white text-adore-slate font-bold px-4 py-2 rounded-full shadow-lg text-sm flex items-center gap-2">
                   <ShoppingBag size={14}/> Quick Add
                 </span>
               </div>
             </div>
+
             <div className="flex justify-between items-center px-2">
               <div>
                 <h3 className="font-display font-bold text-lg text-adore-slate">{p.name}</h3>
