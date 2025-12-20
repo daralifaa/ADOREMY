@@ -4,10 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ADOREMY | Custom Fashion</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
+
     <script>
       tailwind.config = {
         theme: {
@@ -25,16 +29,14 @@
                 creamDark: '#fbc02d',
                 peach: '#fff3e0',
                 peachDark: '#ff9800',
-                // 👇 WARNA BARU (Merah Logo & Pink Pastel)
+                // Warna Baru Kamu
                 pink: '#F8EBEE', 
                 pinkDark: '#6F0F28',
-                // Warna tambahan
                 lilac: '#f3e5f5',
                 lilacDark: '#ab47bc',
                 slate: '#374151'
               }
             },
-            // 👇 INI PENTING! Animasi biar awan & kartunya gerak
             animation: {
               float: 'float 6s ease-in-out infinite',
               'fade-in-up': 'fadeInUp 0.5s ease-out'
@@ -53,38 +55,21 @@
         }
       }
     </script>
+    
     <style>
-      /* Custom scrollbar for a cleaner look */
-      ::-webkit-scrollbar {
-        width: 10px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #fff; 
-      }
+      /* Scrollbar Pink Pastel */
+      ::-webkit-scrollbar { width: 10px; }
+      ::-webkit-scrollbar-track { background: #fff; }
       ::-webkit-scrollbar-thumb {
-        background: #f06292; 
+        background: #F8EBEE;
         border-radius: 5px;
         border: 2px solid #fff;
       }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #ec407a; 
-      }
+      ::-webkit-scrollbar-thumb:hover { background: #6F0F28; }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.33.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.10.1",
-    "lucide-react": "https://esm.sh/lucide-react@^0.561.0"
-  }
-}
-</script>
-</head>
-  <body class="bg-white text-adore-slate antialiased selection:bg-adore-pink selection:text-adore-pinkDark">
+  </head>
+  <body class="bg-white text-adore-slate antialiased">
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>
