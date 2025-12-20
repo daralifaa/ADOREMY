@@ -222,7 +222,7 @@ const LandingPage = () => {
       />
       
       {/* Hero Section */}
-      <header className="relative pt-32 pb-20 px-4 min-h-[85vh] flex flex-col items-center justify-center bg-gradient-to-b from-adore-mint/10 via-white to-adore-pink/10">
+      <header className="relative pt-64 pb-20 px-4 min-h-[85vh] flex flex-col items-center justify-center bg-gradient-to-b from-adore-mint/10 via-white to-adore-pink/10">
         
         {/* Floating Decor */}
         <div className="absolute top-20 left-[5%] w-32 h-32 text-6xl animate-float opacity-60 pointer-events-none">☁️</div>
@@ -474,7 +474,7 @@ const Dashboard = ({ onOpenStudio, onAddToCart }: { onOpenStudio: () => void, on
   };
 
   return (
-    <div className="pt-32 pb-12 px-6 max-w-7xl mx-auto">
+    <div className="pt-64 pb-12 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-display font-black text-adore-slate mb-4">Latest Drops</h2>
         <p className="text-gray-400 font-medium">Get inspired by our pastel collection or create your own.</p>
